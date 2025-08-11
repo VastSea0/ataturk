@@ -70,7 +70,6 @@ export default function Content() {
     // Eğer şu anda konuşuyorsa, durdur
     if (isSpeaking) {
       console.log('Konuşma durduruluyor')
-      stopSpeaking()
       return
     }
 
