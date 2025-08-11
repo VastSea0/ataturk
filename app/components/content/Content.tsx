@@ -11,6 +11,7 @@ type ItemType = {
   title: string
   description?: string
   images?: ImageType[]
+  sounds?: SoundType[]
   source?: string
 }
 
@@ -20,9 +21,17 @@ type ImageType = {
   source?: string
 }
 
+type SoundType = {
+  url: string
+  alt: string
+  source?: string
+}
+
 export default function Content() {
   const searchParams = useSearchParams()
   const [modalImage, setModalImage] = useState<ImageType | null>(null)
+  const [isSpeaking, setIsSpeaking] = useState(false)
+  const [currentAudio, setCurrentAudio] = useState<HTMLAudioElement | null>(null)
 
   const selectedItem = data.find((item: ItemType) => item.id === Number(searchParams.get('id')))
 
@@ -36,6 +45,111 @@ export default function Content() {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [modalImage])
 
+ 
+  useEffect(() => {
+    console.log('TTS sistemi hazır')
+    
+    return () => {
+      if (currentAudio) {
+        currentAudio.pause()
+        currentAudio.src = ''
+      }
+      if (typeof window !== 'undefined' && (window as any).responsiveVoice) {
+        (window as any).responsiveVoice.cancel()
+      }
+      if (typeof window !== 'undefined' && window.speechSynthesis) {
+        window.speechSynthesis.cancel()
+      }
+    }
+  }, [currentAudio])
+
+  // ElevenLabs Text-to-Speech fonksiyonu
+  const speakText = async (text: string) => {
+    console.log('speakText çağrıldı, metin:', text)
+    
+    // Eğer şu anda konuşuyorsa, durdur
+    if (isSpeaking) {
+      console.log('Konuşma durduruluyor')
+      stopSpeaking()
+      return
+    }
+
+    // Temiz metin oluştur
+    const cleanText = text.replace(/undefined/g, '').replace(/\.\s*\./g, '.').trim()
+    console.log('Temizlenmiş metin:', cleanText)
+
+    if (!cleanText) {
+      console.warn('Okunacak metin boş')
+      return
+    }
+
+    setIsSpeaking(true)
+
+    try {
+      console.log('ElevenLabs TTS başlatılıyor...')
+      await speakWithElevenLabs(cleanText)
+      console.log('ElevenLabs TTS başarılı')
+      
+    } catch (error) {
+      console.error('ElevenLabs TTS hatası:', error)
+      alert('Ses servisi kullanılamıyor. ElevenLabs API hatası.')
+      setIsSpeaking(false)
+    }
+  }
+
+
+  const speakWithElevenLabs = async (text: string): Promise<void> => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        console.log('ElevenLabs API çağrısı yapılıyor...')
+        
+        const response = await fetch('/api/tts/elevenlabs', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ 
+            text,
+            voice_id: 'onwK4e9ZLuTAKqWW03F9', // Adam sesi - çok doğal
+            model_id: 'eleven_multilingual_v2'
+          })
+        })
+
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({}))
+          throw new Error(`HTTP ${response.status}: ${errorData.error || 'Unknown error'}`)
+        }
+
+        const audioBlob = await response.blob()
+        const audioUrl = URL.createObjectURL(audioBlob)
+        const audio = new Audio(audioUrl)
+        
+        setCurrentAudio(audio)
+        
+        audio.onended = () => {
+          URL.revokeObjectURL(audioUrl)
+          setIsSpeaking(false)
+          setCurrentAudio(null)
+          console.log('ElevenLabs konuşma tamamlandı')
+          resolve()
+        }
+        
+        audio.onerror = () => {
+          URL.revokeObjectURL(audioUrl)
+          setCurrentAudio(null)
+          reject(new Error('Audio playback failed'))
+        }
+        
+        console.log('ElevenLabs ses çalınıyor...')
+        await audio.play()
+        
+      } catch (error) {
+        console.error('ElevenLabs hatası:', error)
+        setCurrentAudio(null)
+        reject(error)
+      }
+    })
+  }
+
+
   return (
     <div className={styles.content}>
       <div className={styles.dateAndTitle}>
@@ -48,6 +162,27 @@ export default function Content() {
                 {selectedItem.source.includes('https://') ? '*' : 'Bilgi Kaynağı'}
               </a>
             </span>
+          )}
+          {/* Text-to-Speech butonları */}
+          {(selectedItem?.title || selectedItem?.description) && (
+            <div style={{ display: 'inline-flex', gap: '0.5rem', alignItems: 'center' }}>
+              <button
+                onClick={() => {
+                  const textToSpeak = [
+                    selectedItem?.title,
+                    selectedItem?.description
+                  ].filter(Boolean).join('. ')
+                  speakText(textToSpeak)
+                }}
+                className={styles.speakButton}
+                title={isSpeaking ? 'Konuşmayı durdur' : 'Metni seslendir'}
+                aria-label={isSpeaking ? 'Konuşmayı durdur' : 'Metni seslendir'}
+              >
+                {isSpeaking ? '🔊' : '🔈'}
+              </button>
+              
+           
+            </div>
           )}
         </p>
 
@@ -79,7 +214,7 @@ export default function Content() {
 
       {selectedItem?.sounds && selectedItem.sounds.length > 0 && (
         <div className={styles.sounds}>
-          {selectedItem.sounds.map((sound, index) => (
+          {selectedItem.sounds.map((sound: SoundType, index) => (
             <div key={index} className={styles.sound}>
               <p title={`Bilgi kaynağı: ${sound.source}`}>
                 {sound.alt}

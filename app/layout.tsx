@@ -22,6 +22,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='tr'>
+      <head>
+ 
+        <script src="https://code.responsivevoice.org/responsivevoice.js?key=qH9odDzp"></script>
+      </head>
       <Suspense>
         <body className={barlow.className}>{children}</body>
       </Suspense>
