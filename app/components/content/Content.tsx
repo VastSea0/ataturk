@@ -85,30 +85,30 @@ export default function Content() {
     setIsSpeaking(true)
 
     try {
-      console.log('ElevenLabs TTS başlatılıyor...')
-      await speakWithElevenLabs(cleanText)
-      console.log('ElevenLabs TTS başarılı')
+      console.log('Google AI Studio TTS başlatılıyor...')
+      await speakWithGoogleAI(cleanText)
+      console.log('Google AI Studio TTS başarılı')
       
     } catch (error) {
-      console.error('ElevenLabs TTS hatası:', error)
-      alert('Ses servisi kullanılamıyor. ElevenLabs API hatası.')
+      console.error('Google AI Studio TTS hatası:', error)
+      alert('Ses servisi kullanılamıyor. Google AI Studio API hatası.')
       setIsSpeaking(false)
     }
   }
 
 
-  const speakWithElevenLabs = async (text: string): Promise<void> => {
+  // Google AI Studio TTS ile konuşma (ücretsiz ve çok kaliteli)
+  const speakWithGoogleAI = async (text: string): Promise<void> => {
     return new Promise(async (resolve, reject) => {
       try {
-        console.log('ElevenLabs API çağrısı yapılıyor...')
+        console.log('Google AI Studio API çağrısı yapılıyor...')
         
-        const response = await fetch('/api/tts/elevenlabs', {
+        const response = await fetch('/api/tts/google-ai-studio', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ 
             text,
-            voice_id: 'onwK4e9ZLuTAKqWW03F9', // Adam sesi - çok doğal
-            model_id: 'eleven_multilingual_v2'
+            voice: 'Zephyr' // Diğer seçenekler: Aoede, Circe, Fenrir
           })
         })
 
@@ -127,7 +127,7 @@ export default function Content() {
           URL.revokeObjectURL(audioUrl)
           setIsSpeaking(false)
           setCurrentAudio(null)
-          console.log('ElevenLabs konuşma tamamlandı')
+          console.log('Google AI Studio konuşma tamamlandı')
           resolve()
         }
         
@@ -137,11 +137,11 @@ export default function Content() {
           reject(new Error('Audio playback failed'))
         }
         
-        console.log('ElevenLabs ses çalınıyor...')
+        console.log('Google AI Studio ses çalınıyor...')
         await audio.play()
         
       } catch (error) {
-        console.error('ElevenLabs hatası:', error)
+        console.error('Google AI Studio hatası:', error)
         setCurrentAudio(null)
         reject(error)
       }
