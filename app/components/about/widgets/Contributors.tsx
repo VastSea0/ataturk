@@ -6,6 +6,7 @@ type Contributor = {
   login: string
   avatar_url: string
   html_url: string
+  type: string
 }
 
 export default function Contributors() {
@@ -16,14 +17,16 @@ export default function Contributors() {
     fetch('https://api.github.com/repos/gayret/ataturk/contributors')
       .then((response) => response.json())
       .then((data) => {
-        const names = data.map(
-          (contributor: { login: string; avatar_url: string; html_url: string }) => ({
-            login: contributor.login,
-            avatar_url: contributor.avatar_url,
-            html_url: contributor.html_url,
-          })
+        const contributors = data.map((contributor: Contributor) => ({
+          login: contributor.login,
+          avatar_url: contributor.avatar_url,
+          html_url: contributor.html_url,
+          type: contributor.type,
+        }))
+
+        setContributors(
+          contributors.filter((contributor: Contributor) => contributor.type !== 'Bot')
         )
-        setContributors(names)
       })
       .catch((error) => console.error('Error fetching contributors:', error))
   }, [])

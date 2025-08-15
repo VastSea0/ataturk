@@ -1,5 +1,6 @@
 import styles from './About.module.css'
 import Contributors from './widgets/Contributors'
+import DonateButton from './widgets/donate-button/DonateButton'
 
 export default function About() {
   return (
@@ -7,35 +8,25 @@ export default function About() {
       <div className={styles.description}>
         <h1 className={styles.title}>Çocuklara ve Türk Gençliğine!</h1>
         <p>
-          Ulu Önder Gazi Mustafa Kemal ATATÜRK, Türk milletinin bağımsızlık mücadelesine önderlik
-          ederek, Türkiye Cumhuriyeti&#39;nin temellerini atan ve modern Türkiye&#39;nin kurucusu
-          olan büyük bir liderdir. Onun hayatı; cesaret, vizyon ve özveriyle doludur. Bu proje,
-          Atatürk&#39;ün hayatını kronolojik olarak inceleyerek, genç nesillere ilham vermeyi
-          amaçlamaktadır.
+          Ulu Önder Gazi Mustafa Kemal Atatürk, Türk milletinin bağımsızlık mücadelesine önderlik
+          ederek Türkiye Cumhuriyeti&apos;nin kurucusu olmuştur.
+        </p>
+        <p>
+          Bu projenin amacı, Atatürk&apos;ün cesaret, vizyon ve özveriyle dolu olan hayatını
+          kronolojik olarak anlatıp gençlere ilham vermektir.
         </p>
 
         <h4>Kullanımı</h4>
         <p>
-          Sayfanın aşağısında bulunan zaman çizelgesinde Atatürk&#39;ün hayatındaki önemli olayları
-          görebilirsiniz. Her bir tarihin üzerine tıklayarak, o tarihteki olaylar hakkında bilgi
-          edinebilirsiniz. Ayrıca, harita üzerinden ilgili olayların geliştiği coğrafyayı
-          görebilirsiniz.
-        </p>
-
-        <p>
-          Tarihler arasında geçiş yapmak için klavyenizden (sol ve sağ) yön tuşlarını da
-          kullanabilirsiniz.
+          Sayfanın altındaki zaman çizelgesinde Atatürk&apos;ün hayatındaki önemli olayları
+          görebilirsiniz. Tarihlere tıklayarak olay detaylarını ve haritada ilgili bölgeleri
+          inceleyebilirsiniz. Klavyenizdeki yön tuşlarıyla tarihler arasında geçiş yapabilirsiniz.
         </p>
 
         <h4>Katkıda bulunun</h4>
         <p>
-          Projenin kaynak kodları ve verileri herkese açıktır. Siz de Atatürk&#39;ün mirasını
-          yaşatmaya yardımcı olabilirsiniz.
-        </p>
-
-        <p>
-          Projeye katkıda bulunmak için{' '}
-          <a href='https://github.com/gayret/ataturk/blob/main/app/data/data.json' target='_blank'>
+          Projenin kaynak kodları ve verileri herkese açıktır. Katkıda bulunmak için{' '}
+          <a href='https://github.com/gayret/ataturk' target='_blank'>
             GitHub&#39;a
           </a>{' '}
           göz atabilirsiniz.
@@ -45,9 +36,11 @@ export default function About() {
 
         <h4>Teşekkür</h4>
         <small>
-          Projeyi hayata geçirmem için yardımcı olan biricik karım İrem Çiftler Gayret &#39;e
+          Projeyi hayata geçirmem için yardımcı olan biricik karım İrem Çiftler Gayret&apos;e
           teşekkür ederim.
         </small>
+
+        <DonateButton />
       </div>
     </div>
   )

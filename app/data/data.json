@@ -45,8 +45,8 @@
     "description": "(Şemsi Efendi İlkokulundan sonra bir süre Selanik Mülkiye Rüştiyesine devam etti ise de Kaymak Hafız adlı matematik öğretmeninin kendisine haksız yere sopa ile vurması üzerine bu okuldan ayrılmış, kendi istek ve kararı ile Askerî Rüştiyeye başvurarak öğrenimine burada devam etmiştir.)",
     "date": "1894T00:00:00Z",
     "location": {
-      "lat": 38.6910749,
-      "lon": 20.6811815
+      "lat": 40.6211852,
+      "lon": 22.9048279
     },
     "images": [
       {
@@ -438,7 +438,7 @@
   {
     "id": 37,
     "title": "'Tâbiye Tatbikat Seyahatı' adlı kitabının Selanik'te yayımlanması.",
-    "description": "(Bu küçük kitap, 5'inci Kolordunun 19-20 Nisan 1911 günleri yaptığı ve  de katıldığı bir askeri tatbikatın not ve krokilerinden oluşmuştur.)",
+    "description": "(Bu küçük kitap, 5'inci Kolordunun 19-20 Nisan 1911 günleri yaptığı ve kendisinin de katıldığı bir askerî tatbikatın not ve krokilerinden oluşmuştur.)",
     "date": "1911T00:00:00Z",
     "location": {
       "lat": 42.6977,
@@ -734,7 +734,7 @@
   },
   {
     "id": 62,
-    "title": "Komutasındaki kuvvetlerin, Conkbayırı'nda İngilizlere taarruzu ve bu taarruzun başarı ile sonuçlanması. (Bu muharebe esnasında,  kalbini hedef alan bir şarapnel parçasının, göğüs cebindeki saati parçalayarak geri dönmesi sonucu, kendisi mutlak bir ölümden kurtulmuştur.)",
+    "title": "Komutasındaki kuvvetlerin, Conkbayırı'nda İngilizlere taarruzu ve bu taarruzun başarı ile sonuçlanması. (Bu muharebe esnasında, kalbini hedef alan bir şarapnel parçasının, göğüs cebindeki saati parçalayarak geri dönmesi sonucu, kendisi mutlak bir ölümden kurtulmuştur.)",
     "date": "1915-08-10T00:00:00Z",
     "location": {
       "lat": 40.2503121,
@@ -1043,7 +1043,7 @@
   {
     "id": 90,
     "title": "Tekrar Diyarbakır'da bulunan 2'nci Ordu Komutanlığına atanması.",
-    "description": "(Mustafa Kemal, bu atamayı kabul etmediğinden işlem yürürlülük kazanmamış, kendisi 2'nci Ordu Komutanı sıfatıyla izinli sayılarak Halep'ten İstanbul'a gelmiştir.)",
+    "description": "(Mustafa Kemal, bu atamayı kabul etmediğinden işlem yürürlük kazanmamış, kendisi 2'nci Ordu Komutanı sıfatıyla izinli sayılarak Halep'ten İstanbul'a gelmiştir.)",
     "date": "1917-10-09T00:00:00Z",
     "location": {
       "lat": 36.2064064,
@@ -1054,7 +1054,7 @@
   },
   {
     "id": 91,
-    "title": "Halep'ten İstanbul'a dönmesi. (Bazı kaynaklarda  İstanbul'a dönmesi Ekim ortası veya Ekim sonu olarak gösterilmektedir.)",
+    "title": "Halep'ten İstanbul'a dönmesi. (Bazı kaynaklarda İstanbul'a dönmesi Ekim ortası veya Ekim sonu olarak gösterilmektedir.)",
     "date": "1917-10-15T00:00:00Z",
     "location": {
       "lat": 41.0052041,
@@ -2279,7 +2279,7 @@
   {
     "id": 199,
     "title": "Tevhid-i Tedrisat (Öğretimin Birliği) Kanunu'nun kabulü. Hilafetin kaldırılmasına ve Osmanlı hanedanının Türkiye Cumhuriyeti sınırları dışına çıkarılmasına dair Kanun'un kabulü. Şeriye ve Evkaf Vekâleti ile Erkân-ı Harbiye-i Umumiye Vekâleti'nin kaldırılmasına dair Kanun'un kabulü.",
-    "description": "(Şeriye ve Evkaf Vekâletinin dinî hizmetlerini yürütmek üzere Diyanet İşleri Başkanlığı, Erkânıharbiyeiumumiye Vekâletinin yerine Genelkurmay Başkanlığı kurulmuştur.)",
+    "description": "(Şeriye ve Evkaf Vekâletinin dinî hizmetlerini yürütmek üzere Diyanet İşleri Başkanlığı, Erkân-ı Harbiye-i Umumiye Vekâletinin yerine Genelkurmay Başkanlığı kurulmuştur.)",
     "date": "1924-03-03T00:00:00Z",
     "location": {
       "lat": 39.9420298,
@@ -2897,7 +2897,7 @@
   },
   {
     "id": 253,
-    "title": "ATATÜRK'ün Hilaliahmere 'Kızılay' adını verişinin Kızılay Kurultayı'nda kabul edilmesi.",
+    "title": "ATATÜRK'ün Hilal-i Ahmer'e 'Kızılay' adını verişinin Kızılay Kurultayı'nda kabul edilmesi.",
     "date": "1935-04-28T00:00:00Z",
     "location": {
       "lat": 39.9412155,
@@ -3069,7 +3069,7 @@
   {
     "id": 268,
     "title": "ATATÜRK'ün, Cumhuriyet'in 15'inci Yıl Dönümü nedeniyle Türkiye Cumhuriyeti Ordusuna mesajı:",
-    "description": "... Türk vatanının ve Türklük camiasının şan ve şerefini, iç ve dış her türlü tehlikelere karşı korumaktan ibaret olan vazifeni, her an yapmaya hazır olduğuna benim ve büyük ulusumuzun tam bir inan ve itimadımız vardır...",
+    "description": "... Türk vatanının ve Türklük camiasının şan ve şerefini, iç ve dış her türlü tehlikelere karşı korumaktan ibaret olan vazifeni, her an yapmaya hazır olduğuna benim ve büyük ulusumuzun tam bir inanç ve itimadımız vardır...",
     "date": "1938-10-29T00:00:00Z",
     "location": {
       "lat": 41.0391345,
